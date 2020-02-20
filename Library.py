@@ -4,7 +4,7 @@ class Library:
 
     def __init__(self, signUpTime, booksPerDay, books):
         self.__signupTime = signUpTime
-        self.__books = sorted(books, key=Library.bookValues.get, reverse=True)
+        self.__books = sorted(books, key=lambda x: Library.bookValues[x], reverse=True)
         self.__booksPerDay = booksPerDay
         self.__booksToSend = []
         self.__bookSet = set(self.__books)
