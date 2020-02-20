@@ -20,7 +20,3 @@ class Parser:
 
         return scan_days, book_scores, libraries
 
-
-p = Parser()
-print(p.parse('DataSets/b_read_on.txt'))
-
