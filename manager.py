@@ -1,10 +1,26 @@
 import os
-import something as parsei
-import Library
+from Library import Library as Library
+
+def Parse(self, input_file):
+
+    with open(input_file, 'r') as in_file:
+
+        lines = [line.rstrip() for line in in_file.readlines()]
+        lines = lines[:-1]
+        print(lines)
+        book_count, lib_count, scan_days = [int(n) for n in lines[0].split(' ')]
+        book_scores = [int(n) for n in lines[1].split(' ')]
+        libraries = []
+        for i in range(2, len(lines), 2):
+            book_num, signup, shipping = [int(n) for n in lines[i].split(' ')]
+            lib_books = [int(n) for n in lines[i+1].split(' ')]
+            libraries.append((signup, shipping, lib_books))
+
+    return scan_days, book_scores, libraries
 
 def Manage(filename):
     #construction code
-    content = parsei.parse(filename);
+    content = Parse(filename);
     daysToLive = content[0];
     booksDictionary = set;
     for i in range(len(content[1])):
@@ -33,48 +49,7 @@ def Manage(filename):
             del Library.bookValues[i];
     write(libNum, libValues);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 if __name__ == "__main__":
     folder = os.listdir("G:\My Documents\Documents\HashCode2020\super-simple-not-useful-code\DataSets");
     for i in range(len(folder)):
-        manage("G:\My Documents\Documents\HashCode2020\super-simple-not-useful-code\DataSets" + "\\" + folder[i]);
+        Manage("G:\My Documents\Documents\HashCode2020\super-simple-not-useful-code\DataSets" + "\\" + folder[i]);
