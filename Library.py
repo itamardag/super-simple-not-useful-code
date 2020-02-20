@@ -7,7 +7,6 @@ class Library:
         self.__books = sorted(books, key=lambda x: Library.bookValues[x], reverse=True)
         self.__booksPerDay = booksPerDay
         self.__booksToSend = []
-        self.__bookSet = set(self.__books)
 
     def libraryScore(self, timeToEnd):
         maxNumBooks = (timeToEnd - self.__signupTime) * self.__booksPerDay
@@ -26,7 +25,6 @@ class Library:
         return self.__signupTime
 
     def getBooks(self):
-        unsentBooks = self.__bookSet - set(self.__booksToSend)
-        return (self.__booksToSend, list(unsentBooks))
+        return (self.__booksToSend,)
 
 
