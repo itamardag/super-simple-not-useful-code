@@ -36,9 +36,9 @@ def Manage(filename):
     daysToLive = content[0]
     booksDictionary = content[1]
     Library.bookValues = booksDictionary
-    libraries = []
+    libraries = {}
     for i in range(len(content[2])):
-        libraries.append(Library(content[2][i][0], content[2][i][1], content[2][i][2]))
+        libraries[i] = Library(content[2][i][0], content[2][i][1], content[2][i][2])
 
     #iterating code
     day = 0
@@ -46,12 +46,13 @@ def Manage(filename):
     libValues = []
     while day < daysToLive and libNum < len(libraries):
         maxLib = (0, 0)
-        for i in range(len(libraries)):
-            libScore = libraries[i].libraryScore(daysToLive)
+        for i in libraries.keys():
+            libScore = libraries[i].libraryScore(daysToLive - day + 1)
             if libScore > maxLib[1]:
                 maxLib = (i, libScore)
         sentBooks = libraries[maxLib[0]].getBooks()
-        daysToLive += libraries[maxLib[0]].getSignupTime()
+        day += libraries[maxLib[0]].getSignupTime()
+        del libraries[maxLib[0]]
         libNum += 1
         for i in range(len(sentBooks[0])):
             Library.bookValues[sentBooks[0][i]] = 0
