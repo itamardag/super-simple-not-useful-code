@@ -347,4 +347,5 @@ venv/Scripts/tk86t.dll
 venv/Scripts/unicodedata.pyd
 venv/Scripts/vcruntime140.dll
 venv/Scripts/winsound.pyd
-/.idea/
+.idea/misc.xml
+.idea/super-simple-not-useful-code.iml
