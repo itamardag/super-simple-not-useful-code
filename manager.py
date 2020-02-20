@@ -43,10 +43,10 @@ def Manage(filename):
                 maxLib = (i, libScore);
         sentBooks = libraries[maxLib[0]].getBooks();
         daysToLive += libraries[maxLib[0]].getSignupTime();
-        libValues[libNum] = ([maxLib[0], len(sentBooks)], sentBooks);
         libNum += 1;
-        for i in range(len(sentBooks)):
-            del Library.bookValues[i];
+        for i in range(len(sentBooks[0])):
+            del Library.bookValues[sentBooks[0][i]];
+        libValues[libNum] = ([maxLib[0], len(sentBooks)], sentBooks[0] + sentBooks[1]);
     write(libNum, libValues);
 
 if __name__ == "__main__":
