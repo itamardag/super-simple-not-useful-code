@@ -1,6 +1,6 @@
 import os
 import something as parsei
-import somethingElse as Library
+import Library
 
 def Manage(filename):
     #construction code
