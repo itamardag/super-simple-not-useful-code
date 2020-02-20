@@ -56,7 +56,7 @@ def Manage(filename):
         libNum += 1
         for i in range(len(sentBooks[0])):
             Library.bookValues[sentBooks[0][i]] = 0
-        libValues.append(([maxLib[0], len(sentBooks)], sentBooks[0] + sentBooks[1]))
+        libValues.append(([maxLib[0], len(sentBooks[0])], sentBooks[0]))
     WriteResult(filename, libNum, libValues)
     print(filename)
 
